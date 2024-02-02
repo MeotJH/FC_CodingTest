@@ -1,4 +1,5 @@
 # FC_CodingTest
 FastCapus CodingTest
 
-https://github.com/Acka1357/codingtest-java-20 강의 Git저장소
+https://github.com/20-with-Java
+강의 Git저장소
