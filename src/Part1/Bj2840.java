@@ -18,43 +18,61 @@ public class Bj2840 {
 
         // 1. 배열 초기화 한다.
         String[] wheel = new String[arr];
-        for (int i = 0; i < arr; i++) {
-            wheel[i] = "?";
-        }
+        Arrays.fill(wheel, "?");
 
         // 2. 루프를 돌며 값을 추측한다.
         // 2.1 값이 논리적으로 말이 안되면 ! 출력
-        StringBuilder sb = new StringBuilder();
         int temp = 0;
         String str = null;
         boolean flag = false;
-        for (int i = 0 ; i < loop ; i++){
+        while(loop-- > 0){
             st = new StringTokenizer(br.readLine());
 
             int wheelTurn = Integer.valueOf(st.nextToken());
+            int wheelTurn2 = wheelTurn;
             str = st.nextToken();
-            wheelTurn  = (wheelTurn + temp) >= arr ? wheelTurn + temp - arr : wheelTurn + temp;
+
+            wheelTurn  = (( temp - wheelTurn) % arr + arr ) % arr; //(wheelTurn + temp) >= arr ? wheelTurn + temp - arr : wheelTurn + temp;
+            wheelTurn2 = (wheelTurn + temp) >= arr ? wheelTurn + temp - arr : wheelTurn + temp;
+
+
             if( wheel[wheelTurn].equals("?") ){
                 temp = wheelTurn;
+                String asas = wheel[wheelTurn2];
+
+
+                for (int j = 0; j < wheel.length; j++) {
+                    if(wheel[j].equals(str)){
+                        System.out.print("!");
+                        return;
+                    }
+                }
+                
+                
                 wheel[wheelTurn] = str;
             } else if (wheel[wheelTurn].equals(str)) {
                 temp = wheelTurn;
             } else {
                 System.out.print("!");
-                System.exit(0);
+                return;
             }
         }
 
         int t = Arrays.asList(wheel).indexOf(str);
         int idx = Arrays.asList(wheel).indexOf(str);
-        for (int i = 0; i < wheel.length; i++) {
+
+        StringBuilder sb = new StringBuilder();
+        int one = arr;
+        while(arr-- > 0){
             String outStr = wheel[idx];
-            if(idx == 0){ //3 //2 //1 //0
-                idx = idx + wheel.length;
+            if( idx == one-1 ){
+                idx = idx - one;
             }
-            idx--;
-            System.out.print(outStr);
+            idx++;
+            sb.append(outStr);
         }
+
+        System.out.println(sb);
 
 
     }
