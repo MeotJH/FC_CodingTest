@@ -18,7 +18,6 @@ public class Bj1181 {
         }
 
         Arrays.sort(sortTarget, (o1,o2) -> {
-
             if(o1.length() == o2.length()){
                 return o1.compareTo(o2);
             }
@@ -26,7 +25,6 @@ public class Bj1181 {
         });
 
         List<String> collect = Arrays.stream(sortTarget).distinct().collect(Collectors.toList());
-
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         for (String each : collect){
             bw.write(each + "\n");
