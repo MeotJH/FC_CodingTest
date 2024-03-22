@@ -12,7 +12,6 @@ public class Bj2910 {
 
         StringTokenizer st = new StringTokenizer(br.readLine());
         int nums = Integer.valueOf(st.nextToken());
-        int max = Integer.valueOf(st.nextToken());
 
         st = new StringTokenizer(br.readLine());
         HashMap<Integer,Integer> map = new HashMap();
